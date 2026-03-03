@@ -1,0 +1,72 @@
+<div class="container mt-4">
+    <div class="card shadow-lg border-primary">
+    <div class="card-body">
+  <h2 class="text-center titulo-formulario mb-4">REGISTRO DE PRODUCTO FINAL</h2>
+
+  <form (ngSubmit)="registrarProducto()">
+
+    <!-- Código Producto -->
+    <div class="form-group row mb-3">
+      <label class="col-sm-3 col-form-label">Código Producto:</label>
+      <div class="col-sm-9">
+        <input [(ngModel)]="producto.codigo_producto" name="codigo_producto" class="form-control" required>
+        <div *ngIf="invalido(producto.codigo_producto,1)" class="text-primary">
+          Digite Codigo del Producto
+        </div>
+      </div>
+    </div>
+
+    <!-- Nombre Producto -->
+    <div class="form-group row mb-3">
+      <label class="col-sm-3 col-form-label">Nombre Producto:</label>
+      <div class="col-sm-9">
+        <input [(ngModel)]="producto.nombre_producto" name="nombre_producto" class="form-control" required>
+        <div *ngIf="invalido(producto.nombre_producto,1)" class="text-primary" >
+          Digite Nombre del Producto
+        </div>
+      </div>
+    </div>
+
+    <!-- Stock -->
+    <div class="form-group row mb-3">
+      <label class="col-sm-3 col-form-label">Stock:</label>
+      <div class="col-sm-9">
+        <input [(ngModel)]="producto.stock" name="stock" type="number" class="form-control" required>
+        <div *ngIf="invalido(producto.stock,1)" class="text-primary">
+          El stock debe ser mayor a 0
+        </div>
+      </div>
+    </div>
+
+    <!-- Precio Venta -->
+    <div class="form-group row mb-3">
+      <label class="col-sm-3 col-form-label">Precio Venta:</label>
+      <div class="col-sm-9">
+        <input [(ngModel)]="producto.precio_venta" name="precio_venta" type="number" step="0.01" class="form-control" required>
+        <div *ngIf="invalido(producto.precio_venta,1)" class="text-primary">
+          El precio debe ser mayor a 0
+        </div>
+      </div>
+    </div>
+
+    <!-- Categoría con SELECT -->
+    <div class="form-group row mb-3">
+      <label class="col-sm-3 col-form-label">Categoría:</label>
+      <div class="col-sm-9">
+        <select [(ngModel)]="producto.categoria" name="categoria" class="form-select" required>
+          <option value="">Seleccione...</option>
+          <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+        </select>
+        <div *ngIf="invalido(producto.categoria)" class="text-primary">
+          Debe seleccionar una categoría
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-success mx-2" [disabled]="formInvalido()">ENVIAR</button>
+      <button type="button" class="btn btn-secondary mx-2" (click)="limpiar()">LIMPIAR</button>
+    </div>
+  </form>
+</div>

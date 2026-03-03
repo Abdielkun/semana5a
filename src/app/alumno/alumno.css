@@ -1,0 +1,15 @@
+.card {
+  max-width: 500px;   /* ancho máximo del card */
+  margin: 0 auto;     /* centra el card horizontalmente */
+  border-radius: 12px; /* bordes más redondeados */
+}
+
+.list-group-item {
+  font-size: 15px;
+  padding: 10px 15px;
+}
+
+.titulo-alumno {
+  color: #333;   
+  text-align: center;  /* Si no quieres que quede centrado */
+}
